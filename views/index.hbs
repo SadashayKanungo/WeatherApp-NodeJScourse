@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather App</title>
+        <link rel="icon" href="https://img.icons8.com/color/96/000000/globe--v1.png" />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="maincontent">
+            {{>header}}
+            <form>
+                <input placeholder="Your City">
+                <button>Search</button>
+            </form>
+
+            <div id="display">
+                <p id="p1"></p>
+                <p id="p2"></p>
+                <p id="p3"></p>
+            </div>
+        </div>
+        {{>footer}}
+
+        <script src="./script.js"></script>
+    </body>
+</html>
