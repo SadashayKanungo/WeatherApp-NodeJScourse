@@ -5,6 +5,7 @@ const geocode = require('./utils/geocode.js')
 const weather = require('./utils/weather.js')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 //Paths for Express config
 const partialspath = path.join(__dirname, '../views/partials')
@@ -90,6 +91,6 @@ app.get('*', (req,res)=>{
     })
 })
 
-app.listen(3000, ()=>{
-    console.log("Listening on http://localhost:3000")
+app.listen(port, ()=>{
+    console.log("Listening on http://localhost:" + port)
 })
