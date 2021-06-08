@@ -8,11 +8,13 @@
     <body>
         <div class="maincontent">
             {{>header}}
-            <form>
-                <input placeholder="Your City">
-                <button>Search</button>
-            </form>
-
+            <div id="options">
+                <form>
+                    <input placeholder="Your City">
+                    <button id="search">Search</button>
+                </form>
+                <button id="location">Current Location</button>
+            </div>
             <div id="display">
                 <p id="p1"></p>
                 <p id="p2"></p>

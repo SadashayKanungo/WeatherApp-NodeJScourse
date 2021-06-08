@@ -40,7 +40,7 @@ app.get('/help', (req,res)=>{
     })
 })
 
-app.get('/weather', (req,res)=>{
+app.get('/weather-search', (req,res)=>{
     if(!req.query.address){
         return res.send({
             error: "Address query not found"
@@ -71,6 +71,32 @@ app.get('/weather', (req,res)=>{
                 location,
                 address: req.query.address
             })
+        })
+    })
+})
+
+app.get('/weather-location', (req,res)=>{
+    if(!req.query.latitude || !req.query.longitude){
+        return res.send({
+            error: "Latitude and Longitude query not found"
+        })
+    }
+        
+    weather(req.query.latitude, req.query.longitude, (error, response)=>{
+        if(error){
+            return res.send({
+                error: error
+            })
+        }
+
+        const forecast = (response.feelslike === response.temperature) ?
+            (`It is ${response.temperature} degrees outside.`) :
+            (`It is ${response.temperature} degrees outside. Feels like ${response.feelslike} doesn't it!`)
+        
+        res.send({
+            description: response.description,
+            forecast,
+            link: `https://www.google.com/maps?q=${req.query.latitude},${req.query.longitude}`
         })
     })
 })
